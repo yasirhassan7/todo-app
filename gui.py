@@ -57,6 +57,6 @@ while True:
         case sg.WIN_CLOSED: #closes the program when the red close button is pushed
             break
 
-
+dsfasdf
 
 window.close()
