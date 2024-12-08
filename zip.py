@@ -1,5 +1,7 @@
 import FreeSimpleGUI as sg
 from zip_creator import make_archive
+import os
+
 
 label1 = sg.Text("Select files to compress:")
 input1 = sg.Input()
@@ -22,9 +24,10 @@ while True:
     event, values = window.read()
     filepaths = values["files"].split(";")
     folder = values["folder"].split(";")
-    make_archive(filepaths, folder)
+    make_archive(filepaths,folder)
     window["output"].update(values["Compression Completed!"])
 
 
 window.close()
+
 

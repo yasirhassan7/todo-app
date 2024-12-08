@@ -9,5 +9,5 @@ def make_archive(filepaths, dest_dir):
             archive.write(filepath, arcname=filepath.name)
 
 
-if __name__ == "__main__":
-    make_archive(filepaths=["bonus2.2.py", "bonus.2.py"], dest_dir="dest")
+#if __name__ == "__main__":
+#    make_archive(filepaths=["bonus2.2.py", "bonus.2.py"], dest_dir="dest")
