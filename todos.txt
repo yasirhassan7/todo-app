@@ -1,5 +1,4 @@
 Enter Text
-write blog
 turn up heat
 read the book
 watch the movie

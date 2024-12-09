@@ -22,8 +22,13 @@ text_input(label="Enter your Task List:",
            placeholder="Enter item...",
            on_change=add_todo, key='new_todo')
 
-for todo in session_state.todos:
-    checkbox(todo)
+for index, todo in enumerate(session_state.todos):
+    check_box = checkbox(todo, key=todo)
+    if check_box:
+       session_state.todos.pop(index)
+       functions.write_todos(session_state.todos)
+       del session_state[todo]
+       experimental_rerun()
 
 
 
