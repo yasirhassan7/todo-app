@@ -1,34 +1,29 @@
-from streamlit import subheader, text_input, checkbox, session_state, title, write
+import streamlit as st
 import functions
 
-if "todos" not in session_state:
-    session_state.todos = functions.get_todos()
-#todos = functions.get_todos()
+todos = functions.get_todos()
 
 def add_todo():
-    new_todo = session_state["new_todo"]
-    if new_todo:
-        session_state.todos.append(new_todo)
-        functions.write_todos(session_state.todos)
-        session_state["new_todo"] = ""
-    #todos.append
-    #functions.write_todos(todos)
+    todo = st.session_state["new_todo"] + "\n"
+    todos.append(todo)
+    functions.write_todos(todos)
 
-title("My Todo App")
-subheader("This is my Task List")
-write("This app helps me track my task list")
 
-text_input(label="Enter your Task List:",
-           placeholder="Enter item...",
-           on_change=add_todo, key='new_todo')
+st.title("My Todo App")
+st.subheader("This is my todo app.")
+st.write("This app is to increase your productivity.")
 
-for index, todo in enumerate(session_state.todos):
-    check_box = checkbox(todo, key=todo)
-    if check_box:
-       session_state.todos.pop(index)
-       functions.write_todos(session_state.todos)
-       del session_state[todo]
-       experimental_rerun()
+
+for index, todo in enumerate(todos):
+    checkbox = st.checkbox(todo, key=todo)
+    if checkbox:
+        todos.pop(index)
+        functions.write_todos(todos)
+        del st.session_state[todo]
+        st.experimental_rerun()
+
+st.text_input(label="", placeholder="Add new todo...",
+              on_change=add_todo, key='new_todo')
 
 
 
